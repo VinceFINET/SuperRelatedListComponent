@@ -1,38 +1,50 @@
 # SuperRelatedListComponent
 SuperRelatedList Component (Aura version)
 
-## Setup the component
-- SOQL Fields (required): API names of fields you want to select in Salesforce
-- SOQL Table (required): API name of the table in Salesforce
-- SOQL Where (optional): WHERE statements as in a SOQL query (without the Where!!)
-- SOQL Order By (optional): ORDER BY statements as in a SOQL query (without the Order by!!)
-- Fields from Current Record (required): List of Fields (API name) of the current record, comma separated, that can be use in other fields surrounded byt square bracket
-- Table json configuration (required): JSON configuration with 'columns' (as expected by the aura table) and 'additionalFields' (with name, params and formula).
-- CSV export json configuration (required): JSON configuration with 'headers' (an array of strings)
+## Deploy to Salesforce (sandbox)
 
-## Example of setup
-- SOQL Fields: 
-```
-Id, Name, Firstname, Lastname
-```
-- SOQL Table: 
-```
-Contact
-```
-- SOQL Where: 
-```
-AccountId = [Id]
-```
-- SOQL Order By: 
-```
-Name DESC
-```
-- Fields from Current Record (for example in Account): 
-```
-Id
-```
-- Table json configuration: 
-```
+<a href="https://githubsfdeploy-sandbox.herokuapp.com/app/githubdeploy/VinceFINET/SuperRelatedListComponent?ref=master">  
+  <img alt="Deploy to Salesforce (sandbox)" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
+</a>
+
+## Deploy to Salesforce (production and developer edition)
+
+<a href="https://githubsfdeploy.herokuapp.com/app/githubdeploy/VinceFINET/SuperRelatedListComponent?ref=master">
+  <img alt="Deploy to Salesforce (production)" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
+</a>
+
+## Setup the component
+| Name                          | Required | Optional | Description |
+| ---                           | ---      | ---      | ---         |
+| SOQL Fields                   | Yes      |          | API names of fields you want to select in Salesforce |
+| SOQL Table                    | Yes      |          | API name of the table in Salesforce |
+| SOQL Where                    |          | Yes      | WHERE statements as in a SOQL query (without the Where!!) |
+| SOQL Order By                 |          | Yes      | ORDER BY statements as in a SOQL query (without the Order by!!) |
+| Fields from Current Record    | Yes      |          | List of Fields (API name) of the current record, comma separated, that can be use in other fields surrounded byt square bracket |
+| Table json configuration      | Yes      |          | JSON configuration with 'columns' (as expected by the aura table) and 'additionalFields' (with name, params and formula). |
+| CSV export json configuration | Yes      |          | JSON configuration with 'headers' (an array of strings) |
+
+## Example for Contacts and Account
+
+### Screenshots
+<img src="screenshots/Screenshot1.png" />
+<img src="screenshots/Screenshot2.png" />
+<img src="screenshots/Screenshot3.png" />
+
+### Setup
+
+| Name                       | Example |
+| ---                        | ---     |
+| SOQL Fields                | ` Id, Name, FirstName, LastName ` |
+| SOQL Table                 | ` Contact ` |
+| SOQL Where                 | ` AccountId = [Id] ` |
+| SOQL Order By              | ` Name DESC ` |
+| Fields from currend record | ` Id ` |
+| Table json configuration   | ` { "columns": [ ... ], "additionalFields": [...] } ` |
+| CSV export json configuration | ` { "headers": [ "Id", "Name" ] } ` |
+
+Full example of a Table json configuration:
+``` 
 { 
   "columns": [
     { 
@@ -47,12 +59,12 @@ Id
     { 
       "label": "Firstname", 
       "type": "text", 
-      "fieldName": "Firstname" 
+      "fieldName": "FirstName" 
     },
     { 
       "label": "Lastname", 
       "type": "text", 
-      "fieldName": "Firstname" 
+      "fieldName": "FirstName" 
     }
   ],
   "additionalFields": [
@@ -62,24 +74,5 @@ Id
       "formula": "/one/one.app?#/sObject/[Id]/view" 
     }
   ]
-}
+} 
 ```
-- CSV export json configuration: 
-```
-{ 
-  "headers": [ "Id", "Name" ] 
-}
-```
-
-
-## Deploy to Salesforce (sandbox)
-
-<a href="https://githubsfdeploy-sandbox.herokuapp.com/app/githubdeploy/VinceFINET/SuperRelatedListComponent?ref=master">  
-  <img alt="Deploy to Salesforce (sandbox)" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
-</a>
-
-## Deploy to Salesforce (production and developer edition)
-
-<a href="https://githubsfdeploy.herokuapp.com/app/githubdeploy/VinceFINET/SuperRelatedListComponent?ref=master">
-  <img alt="Deploy to Salesforce (production)" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
-</a>
