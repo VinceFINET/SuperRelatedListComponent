@@ -11,7 +11,6 @@
         csvStringResult += headers.join(COLUMN_DIVIDER);
         csvStringResult += LINE_DIVIDER;
 
-        console.debug('START csvStringResult=', csvStringResult);
         for(let i=0; i < rows.length; i++){   
             let counter = 0;
             for(var header in headers) {
@@ -24,9 +23,7 @@
                 counter++;
             }
             csvStringResult += LINE_DIVIDER;
-	        console.debug('LOOP i=', i, ', csvStringResult=', csvStringResult);
         }
-        console.debug('END csvStringResult=', csvStringResult);
         return csvStringResult;        
     }
 })
