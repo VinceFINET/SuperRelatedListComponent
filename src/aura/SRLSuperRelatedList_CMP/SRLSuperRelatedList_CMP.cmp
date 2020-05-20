@@ -1,0 +1,51 @@
+<aura:component controller="SRLDataRetriever_APC" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+	<!-- Configuration attributes -->
+    <aura:attribute name="soqlFields"    type="String" default="Id, Name" />
+    <aura:attribute name="soqlTable"     type="String" default="Account" />
+    <aura:attribute name="soqlWhere"     type="String" default="" />
+    <aura:attribute name="soqlOrderBy"   type="String" default="" />
+    <aura:attribute name="currentFields" type="String" default="Id, Name" />
+    <aura:attribute name="csvConfig"     type="String" default='{ "headers": ["Id", "Name"] }' />
+    <aura:attribute name="tableConfig"   type="String" default='{ 
+        "columns": [ 
+            {"label":"Id", "type":"url", "fieldName":"Id_Url", "typeAttributes":{"label":{"fieldName":"Name"}, "target":{"fieldName":"_blank"}}},
+            {"label":"Name", "type":"text", "fieldName":"Name" } 
+        ], 
+        "additionalFields": [ 
+            {"name": "Id_Url", "params": ["Id"], "formula": "/one/one.app?#/sObject/[Id]/view" } 
+        ]
+    }' />
+    
+	<!-- Internal attributes -->
+    <aura:attribute name="addFields"    type="List" />
+    <aura:attribute name="record"       type="Object" />
+    <aura:attribute name="tableRows"    type="Object[]" />
+    <aura:attribute name="tableColumns" type="Object" />
+    <aura:attribute name="csvHeaders"   type="String[]" />
+
+    <!-- Initialize the internal attributes --> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- LDS to get fields from the default record --> 
+    <force:recordData aura:id="lds" 
+    	layoutType ="FULL" 
+        recordId="{!v.recordId}" 
+        targetFields="{!v.record}"
+        mode="VIEW" />
+    
+    <!-- When LDS is finished, the record will change (do not use the init event!) -->
+    <aura:handler name="change" value="{!v.record}" action="{!c.doGetRows}"/>
+    
+    <!-- Buttons -->
+    <button class="slds-button slds-button--brand" onclick="{!c.doDownloadCsv}">Download As CSV</button>
+    <button class="slds-button slds-button--neutral" onclick="{!c.doGetRows}">Refresh Data</button>
+    <br/><br/>
+
+    <!-- Table -->
+    <lightning:datatable 
+        data="{! v.tableRows }"
+    	columns="{! v.tableColumns }"
+        keyField="Id"
+        hideCheckboxColumn="true" />
+
+</aura:component>
