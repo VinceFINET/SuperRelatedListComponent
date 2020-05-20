@@ -1,0 +1,9 @@
+<design:component>
+    <design:attribute name="soqlFields" label="SOQL Fields" description="List of Fields (API name), comma separated" required="true" />
+    <design:attribute name="soqlTable" label="SOQL Table" description="Table (API name)" required="true" />
+    <design:attribute name="soqlWhere" label="SOQL Where" description="Where statements" />
+    <design:attribute name="soqlOrderBy" label="SOQL Order By" description="Order by statements" />
+    <design:attribute name="currentFields" label="Fields from Current Record" description="List of Fields (API name) of the current record, comma separated" required="true"/>
+    <design:attribute name="tableConfig" label="Table configuration (JSON)" description='JSON configuration with columns (as expected by the aura table) and additionalFields (with name, params and formula).' required="true" />	
+    <design:attribute name="csvConfig" label="CSV export configuration (JSON)" description='JSON configuration with headers (an array of strings).' required="true" />	
+</design:component>
