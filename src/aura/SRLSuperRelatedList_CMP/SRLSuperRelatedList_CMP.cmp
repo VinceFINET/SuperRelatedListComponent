@@ -1,5 +1,5 @@
 <aura:component controller="SRLDataRetriever_APC" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
-	<!-- Configuration attributes -->
+    <!-- Configuration attributes -->
     <aura:attribute name="soqlFields"    type="String" default="Id, Name" />
     <aura:attribute name="soqlTable"     type="String" default="Account" />
     <aura:attribute name="soqlWhere"     type="String" default="" />
@@ -16,7 +16,7 @@
         ]
     }' />
     
-	<!-- Internal attributes -->
+    <!-- Internal attributes -->
     <aura:attribute name="addFields"    type="List" />
     <aura:attribute name="record"       type="Object" />
     <aura:attribute name="tableRows"    type="Object[]" />
