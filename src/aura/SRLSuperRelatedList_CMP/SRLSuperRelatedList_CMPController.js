@@ -48,7 +48,8 @@
             "table":  component.get("v.soqlTable"),
             "whereClause": component.get("v.soqlWhere"),
             "orderByClause": component.get("v.soqlOrderBy"),
-            "variables": component.get("v.record")
+            "variables": component.get("v.record"),
+            "limit": 5000
         });
         action.setCallback(this, function(response){
             const state = response.getState();

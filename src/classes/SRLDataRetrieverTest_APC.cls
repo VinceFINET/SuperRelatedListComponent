@@ -21,7 +21,7 @@ public class SRLDataRetrieverTest_APC {
         String orderByClause = 'Name DESC';
         SObject mainRecord = accounts[0];
 
-        List<SObject> rows = IDDSuperRelatedListController.GetRows(fields, table, whereClause, orderByClause, mainRecord);
+        List<SObject> rows = IDDSuperRelatedListController.GetRows(fields, table, whereClause, orderByClause, mainRecord, 10);
 
         System.assertEquals(rows.size(), 2);
         System.assertEquals(((Contact) rows[0]).FirstName, 'BB');
