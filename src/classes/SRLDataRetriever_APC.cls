@@ -12,7 +12,7 @@ public class SRLDataRetriever_APC {
     @AuraEnabled
     public static List<SObject> GetRows(String fields, String table, 
         String whereClause, String orderByClause, 
-        SObject variables, Integer limit) {
+        SObject variables, Integer maximumNbRows) {
         
         Map<String, Object> var = variables.getPopulatedFieldsAsMap();
         String whereClauseBind = whereClause;
@@ -23,13 +23,13 @@ public class SRLDataRetriever_APC {
                 whereClauseBind = whereClauseBind.replace(bindingKey, '\''+value+'\'');
             }
         }
-        if (limit == null || limit > MAX_ROWS) limit = MAX_ROWS;
+        if (maximumNbRows == null || maximumNbRows > MAX_ROWS) maximumNbRows = MAX_ROWS;
         String query = 
             ' SELECT ' + fields + 
             ' FROM ' + table + 
             (String.isNotBlank(whereClauseBind) ? ' WHERE '    + whereClauseBind : '') + 
             (String.isNotBlank(orderByClause)   ? ' ORDER BY ' + orderByClause   : '') + 
-            ' LIMIT ' + limit);
+            ' LIMIT ' + maximumNbRows);
         return Database.query(query);
     }
 }
