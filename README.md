@@ -22,7 +22,9 @@ SuperRelatedList Component (Aura version)
 | SOQL Order By                 |          | Yes      | ORDER BY statements as in a SOQL query (without the Order by!!) |
 | Fields from Current Record    | Yes      |          | List of Fields (API name) of the current record, comma separated, that can be use in other fields surrounded byt square bracket |
 | Table json configuration      | Yes      |          | JSON configuration with 'columns' (as expected by the aura table) and 'additionalFields' (with name, params and formula). |
-| CSV export json configuration | Yes      |          | JSON configuration with 'headers' (an array of strings) |
+| CSV export json configuration |          | Yes      | JSON configuration with 'headers' (an array of strings) and an optional setting for the CSV button |
+
+Note: If the CSV export config is not set, the CSV button will not appear when rendering.
 
 ## Example for Contacts and Account
 
@@ -41,7 +43,7 @@ SuperRelatedList Component (Aura version)
 | SOQL Order By              | ` Name DESC ` |
 | Fields from currend record | ` Id ` |
 | Table json configuration   | ` { "columns": [ ... ], "additionalFields": [...] } ` |
-| CSV export json configuration | ` { "headers": [ "Id", "Name" ] } ` |
+| CSV export json configuration | ` { "headers": [ "Id", "Name" ], "button": { "label": "Download as CSV" } } ` |
 
 Full example of a Table json configuration:
 ``` 
