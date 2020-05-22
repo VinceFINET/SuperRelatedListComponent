@@ -13,6 +13,7 @@ A component that renders a Related List in Salesforce Lightning Experience UI.
 It is highly configurable directly in the Lighnting Experience Builder.
 It calls an Apex class to perform a dynamic SOQL query (with the default visibility of the current user).
 Values of the current record's field can be injected in the SOQL via a simple syntax in the parameter.
+The Apex class is limiting the number of rows that it retreives (maximum 5000). But this limit can be lowered via an optional parameter in the Apex method.
 
 ## Deploy to Salesforce (sandbox)
 
