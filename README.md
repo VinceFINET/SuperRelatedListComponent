@@ -1,6 +1,17 @@
 # SuperRelatedListComponent
 SuperRelatedList Component (Aura version)
 
+## What's inside?
+- Two Apex Classes:
+  - SRLDataRetriever_APC (100% covered)
+  - SRLDataRetrieverTest_APC (Test class)
+- One Aura Bundle:
+  - SRLSuperRelatedList_CMP (Component, Design, Controller, Helper)
+
+## What it does...
+A component that is highly configurable, calling an Apex class to perform a dynamic SOQL query (with the default visibility of the current user).
+Setup of the component is directly in the Lighnting Experience Builder.
+
 ## Deploy to Salesforce (sandbox)
 
 <a href="https://githubsfdeploy-sandbox.herokuapp.com/app/githubdeploy/VinceFINET/SuperRelatedListComponent?ref=master">  
