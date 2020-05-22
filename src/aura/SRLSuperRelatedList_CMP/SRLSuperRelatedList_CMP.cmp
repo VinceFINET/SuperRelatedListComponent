@@ -5,7 +5,12 @@
     <aura:attribute name="soqlWhere"     type="String" default="" />
     <aura:attribute name="soqlOrderBy"   type="String" default="" />
     <aura:attribute name="currentFields" type="String" default="Id, Name" />
-    <aura:attribute name="csvConfig"     type="String" default='{ "headers": ["Id", "Name"] }' />
+    <aura:attribute name="csvConfig"     type="String" default='{ 
+        "button": { 
+            "label": "Download As CSV" 
+        }, 
+        "headers": ["Id", "Name"] 
+    }' />
     <aura:attribute name="tableConfig"   type="String" default='{ 
         "columns": [ 
             {"label":"Id", "type":"url", "fieldName":"Id_Url", "typeAttributes":{"label":{"fieldName":"Name"}, "target":{"fieldName":"_blank"}}},
@@ -17,12 +22,13 @@
     }' />
     
     <!-- Internal attributes -->
-    <aura:attribute name="addFields"     type="List" />
-    <aura:attribute name="record"        type="Object" />
-    <aura:attribute name="tableRows"     type="Object[]" />
-    <aura:attribute name="tableColumns"  type="Object" />
-    <aura:attribute name="csvShowButton" type="Boolean" default="false" />
-    <aura:attribute name="csvHeaders"    type="String[]" />
+    <aura:attribute name="addFields"      type="List" />
+    <aura:attribute name="record"         type="Object" />
+    <aura:attribute name="tableRows"      type="Object[]" />
+    <aura:attribute name="tableColumns"   type="Object" />
+    <aura:attribute name="csvShowButton"  type="Boolean" default="false" />
+    <aura:attribute name="csvLabelButton" type="String" default="Download As CSV" />
+    <aura:attribute name="csvHeaders"     type="String[]" />
 
     <!-- Initialize the internal attributes --> 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
@@ -39,7 +45,7 @@
     
     <!-- Buttons -->
     <aura:if isTrue="{!v.csvShowButton}">
-        <button class="slds-button slds-button--brand" onclick="{!c.doDownloadCsv}">Download As CSV</button>
+        <button class="slds-button slds-button--brand" onclick="{!c.doDownloadCsv}">{!v.csvLabelButton}</button>
     </aura:if>
     <button class="slds-button slds-button--neutral" onclick="{!c.doGetRows}">Refresh Data</button>
     <br/><br/>

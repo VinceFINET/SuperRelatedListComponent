@@ -12,6 +12,9 @@
             const csvConfig = JSON.parse(jsonCsvConfig);
             if (csvConfig) {
                 component.set("v.csvHeaders", csvConfig.headers);
+                if (csvConfig.button && csvConfig.button.label) {
+                    component.set("v.csvLabelButton", csvConfig.button.label);
+                }
                 component.set("v.csvShowButton", true);
             } else {
                 component.set("v.csvHeaders", []);
