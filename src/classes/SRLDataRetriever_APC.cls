@@ -29,7 +29,7 @@ public class SRLDataRetriever_APC {
             ' FROM ' + table + 
             (String.isNotBlank(whereClauseBind) ? ' WHERE '    + whereClauseBind : '') + 
             (String.isNotBlank(orderByClause)   ? ' ORDER BY ' + orderByClause   : '') + 
-            ' LIMIT ' + maximumNbRows);
+            ' LIMIT ' + maximumNbRows;
         return Database.query(query);
     }
 }
