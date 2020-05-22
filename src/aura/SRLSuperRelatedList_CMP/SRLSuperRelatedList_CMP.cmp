@@ -17,11 +17,12 @@
     }' />
     
     <!-- Internal attributes -->
-    <aura:attribute name="addFields"    type="List" />
-    <aura:attribute name="record"       type="Object" />
-    <aura:attribute name="tableRows"    type="Object[]" />
-    <aura:attribute name="tableColumns" type="Object" />
-    <aura:attribute name="csvHeaders"   type="String[]" />
+    <aura:attribute name="addFields"     type="List" />
+    <aura:attribute name="record"        type="Object" />
+    <aura:attribute name="tableRows"     type="Object[]" />
+    <aura:attribute name="tableColumns"  type="Object" />
+    <aura:attribute name="csvShowButton" type="Boolean" default="false" />
+    <aura:attribute name="csvHeaders"    type="String[]" />
 
     <!-- Initialize the internal attributes --> 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
@@ -37,7 +38,9 @@
     <aura:handler name="change" value="{!v.record}" action="{!c.doGetRows}"/>
     
     <!-- Buttons -->
-    <button class="slds-button slds-button--brand" onclick="{!c.doDownloadCsv}">Download As CSV</button>
+    <aura:if isTrue="{!v.csvShowButton}">
+        <button class="slds-button slds-button--brand" onclick="{!c.doDownloadCsv}">Download As CSV</button>
+    </aura:if>
     <button class="slds-button slds-button--neutral" onclick="{!c.doGetRows}">Refresh Data</button>
     <br/><br/>
 

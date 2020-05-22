@@ -4,13 +4,19 @@
         // Read "tableConfig" from configuration to generate table headers
         // ------------------------------------------
         const jsonTableConfig = component.get("v.tableConfig");
-		    const jsonCsvConfig = component.get("v.csvConfig");
+		const jsonCsvConfig = component.get("v.csvConfig");
         try {
             const tableConfig = JSON.parse(jsonTableConfig);
             component.set("v.addFields", tableConfig.additionalFields);
             component.set("v.tableColumns", tableConfig.columns);
             const csvConfig = JSON.parse(jsonCsvConfig);
-            component.set("v.csvHeaders", csvConfig.headers);
+            if (csvConfig) {
+                component.set("v.csvHeaders", csvConfig.headers);
+                component.set("v.csvShowButton", true);
+            } else {
+                component.set("v.csvHeaders", []);
+                component.set("v.csvShowButton", false);
+            }
         } catch (error) {
             console.error('tableConfig=', jsonTableConfig, 'csvConfig=', csvConfig, 'Error=', error);          
         }
