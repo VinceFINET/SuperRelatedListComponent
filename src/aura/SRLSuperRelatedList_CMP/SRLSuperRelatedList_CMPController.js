@@ -6,19 +6,23 @@
         const jsonTableConfig = component.get("v.tableConfig");
 		const jsonCsvConfig = component.get("v.csvConfig");
         try {
+            // Table parameters
             const tableConfig = JSON.parse(jsonTableConfig);
             component.set("v.addFields", tableConfig.additionalFields);
             component.set("v.tableColumns", tableConfig.columns);
-            const csvConfig = JSON.parse(jsonCsvConfig);
-            if (csvConfig) {
-                component.set("v.csvHeaders", csvConfig.headers);
-                if (csvConfig.button && csvConfig.button.label) {
-                    component.set("v.csvLabelButton", csvConfig.button.label);
+            
+            // CSV parameters
+            component.set("v.csvHeaders", []);
+            component.set("v.csvShowButton", false);
+            if (jsonCsvConfig) {
+                const csvConfig = JSON.parse(jsonCsvConfig);
+                if (csvConfig) {
+                    component.set("v.csvHeaders", csvConfig.headers);
+                    if (csvConfig.button && csvConfig.button.label) {
+                        component.set("v.csvLabelButton", csvConfig.button.label);
+                    }
+                    component.set("v.csvShowButton", true);
                 }
-                component.set("v.csvShowButton", true);
-            } else {
-                component.set("v.csvHeaders", []);
-                component.set("v.csvShowButton", false);
             }
         } catch (error) {
             console.error('tableConfig=', jsonTableConfig, 'csvConfig=', csvConfig, 'Error=', error);          
