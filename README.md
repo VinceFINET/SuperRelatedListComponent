@@ -9,8 +9,10 @@ SuperRelatedList Component (Aura version)
   - SRLSuperRelatedList_CMP (Component, Design, Controller, Helper)
 
 ## What it does...
-A component that is highly configurable, calling an Apex class to perform a dynamic SOQL query (with the default visibility of the current user).
-Setup of the component is directly in the Lighnting Experience Builder.
+A component that renders a Related List in Salesforce Lightning Experience UI.
+It is highly configurable directly in the Lighnting Experience Builder.
+It calls an Apex class to perform a dynamic SOQL query (with the default visibility of the current user).
+Values of the current record's field can be injected in the SOQL via a simple syntax in the parameter.
 
 ## Deploy to Salesforce (sandbox)
 
